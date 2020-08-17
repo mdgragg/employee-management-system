@@ -1,6 +1,6 @@
 const mysql = require("mysql")
 const inquirer = require("inquirer")
-const cTable = require("console.table")
+const Table = require("console.table")
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -21,7 +21,14 @@ function start() {
             type: "list",
             message: "What would you like to do?",
             name: "action",
-            choices: ["View All Employees", "View All Employees By Department", "View All Employees by Role", "Add Employee", "Add Department", "Add Role", "Update Employee Role", "Exit"]
+            choices: ["View All Employees", 
+                      "View All Employees By Department", 
+                      "View All Employees by Role", 
+                      "Add Employee", 
+                      "Add Department", 
+                      "Add Role", 
+                      "Update Employee Role", 
+                      "Exit"]
         }
     ]).then(function (res) {
         switch (res.action) {
@@ -187,7 +194,7 @@ function addEmployee() {
             role_id: roleId
         }, function(err){
             if (err) throw err
-            console.log("Added Employee!")
+            console.log("Employee Added!")
             start()
         });
     });
@@ -205,7 +212,7 @@ function addDept() {
         connection.query("INSERT INTO department SET ?", {
             department: res.department
         })
-        console.log("Added Department")
+        console.log("Department Added!")
         start();
     });
 };
@@ -222,7 +229,7 @@ function addRole() {
         connection.query("INSERT INTO role SET?", {
             title: res.role
         })
-        console.log("Added Role")
+        console.log("Role Added!")
         start();
     });
 };
@@ -273,7 +280,7 @@ function updateEmployee() {
             ], 
             function(err, res){
                 if(err) throw err
-                console.log("Updated Role!")
+                console.log("Role Updated!")
                 start();
             });
         });
