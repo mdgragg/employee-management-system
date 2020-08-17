@@ -21,8 +21,8 @@ CREATE TABLE employee (
   last_name VARCHAR(30),
   manager_id INT,
   role_id INT,
-  FOREIGN KEY (role_id) REFERENCES role(id),
-  FOREIGN KEY (manager_id) REFERENCES employee(id)
+  FOREIGN KEY (manager_id) REFERENCES employee(id),
+  FOREIGN KEY (role_id) REFERENCES role(id)
 );
 
 SELECT * FROM department;

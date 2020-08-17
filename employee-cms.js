@@ -128,7 +128,7 @@ function viewRole() {
 };
 
 // Select types of roles from database
-var roleArr = []
+let roleArr = []
 function readRoles() {
     
     connection.query("SELECT * FROM role", function (err, res) {
@@ -141,7 +141,7 @@ function readRoles() {
 };
 
 // Select managers from database
-var managerArr = []
+let managerArr = []
 function readManager() {
    
     connection.query("SELECT first_name, last_name FROM employee WHERE manager_id IS NULL", function (err, res) {
@@ -177,6 +177,7 @@ function addEmployee() {
             name: "manager",
             message: "Who is the employee's manager?",
             choices: readManager()
+
         }
     ]).then(function (answers) {
         var roleId = readRoles().indexOf(answers.role) + 1
@@ -229,7 +230,6 @@ function addRole() {
 };
 
 
-
 // Update employee's role
 function updateEmployee() {
     connection.query("SELECT employee.first_name, role.title FROM employee INNER JOIN role on role.id = employee.role_id ", function (err, res) {
@@ -264,10 +264,14 @@ function updateEmployee() {
             }
         ]).then(function(answer){
             var roleId = readRoles().indexOf(answer.role) + 1
-            connection.query("UPDATE employee SET ? WHERE ?", 
+            connection.query("UPDATE employee SET ? WHERE ? ", 
             [
-             {role_id: roleId},
-             {first_name: answer.employee}
+                {
+                    role_id: roleId
+                },
+                {
+                    first_name: answer.employee
+                }
             ], 
             function(err, res){
                 if(err) throw err
@@ -278,6 +282,4 @@ function updateEmployee() {
     });
 };
 
-
-
-
+  
