@@ -15,7 +15,6 @@ connection.connect(function(err) {
     start();
   });
 
-  
 function start() {
     inquirer.prompt([
         {
@@ -128,7 +127,7 @@ function viewRole() {
 };
 
 // Select types of roles from database
-let roleArr = []
+var roleArr = []
 function readRoles() {
     
     connection.query("SELECT * FROM role", function (err, res) {
@@ -141,7 +140,7 @@ function readRoles() {
 };
 
 // Select managers from database
-let managerArr = []
+var managerArr = []
 function readManager() {
    
     connection.query("SELECT first_name, last_name FROM employee WHERE manager_id IS NULL", function (err, res) {
@@ -177,7 +176,6 @@ function addEmployee() {
             name: "manager",
             message: "Who is the employee's manager?",
             choices: readManager()
-
         }
     ]).then(function (answers) {
         var roleId = readRoles().indexOf(answers.role) + 1
