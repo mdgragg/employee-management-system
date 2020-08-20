@@ -1,7 +1,7 @@
 # employee-management-system
 
 
-<img src="https://github.com/mdgragg/employee-management-system/blob/master/assets/ScreenShot.png?raw=true" width="500" />
+<img src="https://github.com/mdgragg/employee-management-system/blob/master/assets/ScreenShot.png?raw=true" width="600" />
 
 ## Description
 A Employee Tracker application. This application allows the user to: View All Employees, View Employees By Department, View Employees by Role, Add an Employee, Add a Department, Add a Role, and Update an Employee Role. 
